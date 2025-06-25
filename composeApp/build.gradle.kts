@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.kotlinxSerialization)
 }
 
 kotlin {
@@ -42,6 +43,15 @@ kotlin {
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation(libs.navigation.compose)
             implementation(libs.material.icons.core)
+
+            implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.kotlinx.browser)
+            implementation(libs.kotlinx.serialization)
+
+            implementation(libs.ktor.core)
+
+            implementation(libs.coil.compose)
+            implementation(libs.coil.network.ktor)
 
         }
         commonTest.dependencies {

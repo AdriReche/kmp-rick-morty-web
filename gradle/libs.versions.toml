@@ -5,6 +5,12 @@ junit = "4.13.2"
 kotlin = "2.1.21"
 navigation = "2.9.0-alpha17"
 materialCore = "1.7.3"
+kotlinx-browser = "0.3"
+kotlinx-coroutines = "1.7.3"
+ktor = "3.2.0"
+kotlinx-serialization = "1.6.3"
+#Images
+coil = "3.0.0-alpha08"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -17,7 +23,22 @@ navigation-compose = { module = "org.jetbrains.androidx.navigation:navigation-co
 # Library for Icons
 material-icons-core = { module = "org.jetbrains.compose.material:material-icons-core", version.ref = "materialCore" }
 
+# Coroutines
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
+
+# Api calls
+kotlinx-browser = { module = "org.jetbrains.kotlinx:kotlinx-browser-wasm-js", version.ref = "kotlinx-browser" }
+ktor-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+
+#Images
+coil-compose = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil" }
+coil-network-ktor = { group = "io.coil-kt.coil3", name = "coil-network-ktor", version.ref = "coil" }
+
+#Serialization
+kotlinx-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
+
 [plugins]
 composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }
 composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlinxSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
