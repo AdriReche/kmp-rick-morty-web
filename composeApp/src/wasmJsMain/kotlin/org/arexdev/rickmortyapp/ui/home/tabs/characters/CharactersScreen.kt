@@ -67,8 +67,8 @@ fun CharacterOfTheDay(characterModel: CharacterModel? = null) {
         shape = RoundedCornerShape(12)
     ) {
         if (characterModel == null) {
-            Box(contentAlignment = Alignment.Center) {
-                CircularProgressIndicator()
+            Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
+                CircularProgressIndicator(color = Color.Green)
             }
         } else {
             Box(contentAlignment = Alignment.Center) {
