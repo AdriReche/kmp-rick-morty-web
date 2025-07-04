@@ -13,4 +13,8 @@ class RepositoryImpl(private val apiService: ApiServiceKtor) : Repository {
     override suspend fun getCharacterImage(url: String): ImageModel {
         return ImageModel(apiService.getCharacterImage(url))
     }
+
+    override suspend fun getAllCharacters(page: Int): List<CharacterModel> =
+        apiService.getAllCharacters(page).results.map { it.toDomainModel() }
+
 }

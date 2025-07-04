@@ -1,18 +1,42 @@
-This is a Kotlin Multiplatform project targeting Web.
+# Rick and Morty API with Kotlin Multiplatform
 
-* `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - `commonMain` is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    `iosMain` would be the right folder for such calls.
+This is a test project to learn how to use Kotlin Multiplatform by creating a web application that consumes the Rick and
+Morty API, following the course
+from [Appcademy](https://www.appcademy.dev/kotlin-multiplataforma-compose-curso-definitivo-desde-0).
 
+## Implemented Features
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html),
-[Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform/#compose-multiplatform),
-[Kotlin/Wasm](https://kotl.in/wasm/)…
+- ✅ Initial project structure
+- ✅ Basic navigation system
+- ✅ API services and data models for character retrieval
+- ✅ Pagination support and UI integration
 
-We would appreciate your feedback on Compose/Web and Kotlin/Wasm in the public Slack channel [#compose-web](https://slack-chats.kotlinlang.org/c/compose-web).
-If you face any issues, please report them on [YouTrack](https://youtrack.jetbrains.com/newIssue?project=CMP).
+## Technologies Used
 
-You can open the web application by running the `:composeApp:wasmJsBrowserDevelopmentRun` Gradle task.
+- **Kotlin Multiplatform**: Framework for sharing code across platforms
+- **Compose Multiplatform**: Declarative UI framework for multiple platforms
+- **Kotlin/Wasm**: Compilation to WebAssembly for optimized web performance
+- **Rick & Morty API**: External data source for practicing network calls
+
+## Running the Project
+
+To start the web application, run the Gradle task:
+
+```bash
+./gradlew :composeApp:wasmJsBrowserDevelopmentRun
+```
+
+## Learning Resources
+
+- [Kotlin Multiplatform Documentation](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)
+- [Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform/)
+- [Kotlin/Wasm](https://kotl.in/wasm/)
+
+## Feedback and Contributions
+
+This is a personal learning project. If you find issues or have suggestions, please feel free to open an issue in
+the [repository](https://github.com/AdriReche/kmp-rick-morty-web).
+
+---
+
+*Project based on the Kotlin Multiplatform course by Appcademy*

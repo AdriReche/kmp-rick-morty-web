@@ -5,6 +5,7 @@ import io.ktor.client.call.*
 import io.ktor.client.request.*
 import kotlinx.serialization.json.Json
 import org.arexdev.rickmortyapp.data.remote.response.CharacterResponse
+import org.arexdev.rickmortyapp.data.remote.response.CharactersWrapperResponse
 
 class ApiServiceKtor() {
 
@@ -30,6 +31,17 @@ class ApiServiceKtor() {
     suspend fun getCharacterImage(url: String): ByteArray {
         return try {
             client.get(url).body()
+        } catch (e: Exception) {
+            throw Exception("Error fetching image: ${e.message}", e)
+        }
+    }
+
+    suspend fun getAllCharacters(page: Int): CharactersWrapperResponse {
+        try {
+            val response: String = client.get(BASE_URL) {
+                parameter("page", page)
+            }.body()
+            return json.decodeFromString(CharactersWrapperResponse.serializer(), response)
         } catch (e: Exception) {
             throw Exception("Error fetching image: ${e.message}", e)
         }
