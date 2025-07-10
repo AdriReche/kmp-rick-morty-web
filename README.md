@@ -10,6 +10,7 @@ from [Appcademy](https://www.appcademy.dev/kotlin-multiplataforma-compose-curso-
 - ✅ Basic navigation system
 - ✅ API services and data models for character retrieval
 - ✅ Pagination support and UI integration
+- ✅ Local Store integration
 
 ## Technologies Used
 

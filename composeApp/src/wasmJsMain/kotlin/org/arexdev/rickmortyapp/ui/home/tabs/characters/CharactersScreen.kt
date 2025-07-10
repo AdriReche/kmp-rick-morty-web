@@ -53,7 +53,10 @@ fun CharactersScreen() {
         horizontalAlignment = Alignment.CenterHorizontally
     )
     {
-        CharacterOfTheDay(state.characterOfTheDay)
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Text("Characters", fontSize = 24.sp, color = Color.Black)
+            CharacterOfTheDay(state.characterOfTheDay)
+        }
         Spacer(modifier = Modifier.height(24.dp))
         CharactersScreenPag(viewModel)
     }

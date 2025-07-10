@@ -18,4 +18,15 @@ data class CharacterResponse(
             image = image
         )
     }
+
+    companion object {
+        fun toResponse(characterModel: CharacterModel): CharacterResponse {
+            return CharacterResponse(
+                id = characterModel.id,
+                name = characterModel.name,
+                status = if (characterModel.isAlive) "Alive" else "Dead",
+                image = characterModel.image
+            )
+        }
+    }
 }
