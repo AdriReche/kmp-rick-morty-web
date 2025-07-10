@@ -7,4 +7,6 @@ interface Repository {
     suspend fun getSingleCharacter(id: String): CharacterModel
     suspend fun getCharacterImage(url: String): ImageModel
     suspend fun getAllCharacters(page: Int): List<CharacterModel>
+    suspend fun saveCharacterDB(selectedDay: String, character: CharacterModel)
+    suspend fun getCharacterDB(selectedDay: String): CharacterModel?
 }
