@@ -19,6 +19,5 @@ fun NavigationBottomWrapper(navController: NavHostController) {
         composable(Routes.Characters.route) {
             CharactersScreen()
         }
-
     }
 }

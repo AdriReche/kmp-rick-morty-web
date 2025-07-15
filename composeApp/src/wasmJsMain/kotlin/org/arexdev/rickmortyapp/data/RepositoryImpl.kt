@@ -5,6 +5,7 @@ import org.arexdev.rickmortyapp.data.remote.ApiServiceKtor
 import org.arexdev.rickmortyapp.data.remote.response.CharacterResponse
 import org.arexdev.rickmortyapp.domain.Repository
 import org.arexdev.rickmortyapp.domain.model.CharacterModel
+import org.arexdev.rickmortyapp.domain.model.EpisodeModel
 import org.arexdev.rickmortyapp.domain.model.ImageModel
 
 class RepositoryImpl(private val apiService: ApiServiceKtor, private val localStoreService: LocalStoreService) :
@@ -28,5 +29,8 @@ class RepositoryImpl(private val apiService: ApiServiceKtor, private val localSt
 
     override suspend fun getCharacterDB(selectedDay: String): CharacterModel? =
         localStoreService.getCharacter(selectedDay)?.toDomainModel()
+
+    override suspend fun getAllEpisodes(page: Int): List<EpisodeModel> =
+        apiService.getAllEpisodes(page).results.map { it.toDomainModel() }
 
 }
