@@ -56,7 +56,7 @@ class ApiServiceKtor() {
             }.body()
             return json.decodeFromString(EpisodesWrapperResponse.serializer(), response)
         } catch (e: Exception) {
-            throw Exception("Error fetching image: ${e.message}", e)
+            throw Exception("Error fetching episodes: ${e.message}", e)
         }
     }
 }
