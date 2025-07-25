@@ -11,6 +11,7 @@ from [Appcademy](https://www.appcademy.dev/kotlin-multiplataforma-compose-curso-
 - ✅ API services and data models for character retrieval
 - ✅ Pagination support and UI integration
 - ✅ Local Store integration
+- ✅ Add video player component
 
 ## Technologies Used
 
