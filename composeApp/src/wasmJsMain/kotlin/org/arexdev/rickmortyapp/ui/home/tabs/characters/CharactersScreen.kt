@@ -44,8 +44,8 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 @Composable
 @Preview
 fun CharactersScreen() {
-    val viewModel = remember { CharactersViewModel(Provider.getRandomCharacter, Provider.repository) }
-    val state by viewModel.state.collectAsState()
+    val charactersViewModel = remember { Provider.charactersViewModel }
+    val state by charactersViewModel.state.collectAsState()
 
     Column(
         Modifier.fillMaxSize(),
@@ -58,7 +58,7 @@ fun CharactersScreen() {
             CharacterOfTheDay(state.characterOfTheDay)
         }
         Spacer(modifier = Modifier.height(24.dp))
-        CharactersScreenPag(viewModel)
+        CharactersScreenPag(charactersViewModel)
     }
 }
 

@@ -27,6 +27,10 @@ To start the web application, run the Gradle task:
 ./gradlew :composeApp:wasmJsBrowserDevelopmentRun
 ```
 
+## Debug the Project
+
+https://kotlinlang.org/docs/wasm-debugging.html
+
 ## Learning Resources
 
 - [Kotlin Multiplatform Documentation](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)
