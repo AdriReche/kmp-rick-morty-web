@@ -46,4 +46,13 @@ class EpisodesViewModel(
             _state.update { it.copy(episodes = it.episodes.copy(loading = false)) }
         }
     }
+
+    fun onPlaySelected(url: String) {
+        _state.update { state -> state.copy(playVideo = url) }
+    }
+
+    fun onCloseVideo() {
+        println("Closing video")
+        _state.update { state -> state.copy(playVideo = "") }
+    }
 }

@@ -4,6 +4,7 @@ import org.arexdev.rickmortyapp.domain.model.EpisodeModel
 
 data class EpisodesState(
     val episodes: EpisodesUiState = EpisodesUiState(),
+    val playVideo: String = ""
 )
 
 data class EpisodesUiState(

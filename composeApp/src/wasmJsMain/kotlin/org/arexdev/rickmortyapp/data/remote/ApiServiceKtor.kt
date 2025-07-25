@@ -44,7 +44,7 @@ class ApiServiceKtor() {
             }.body()
             return json.decodeFromString(CharactersWrapperResponse.serializer(), response)
         } catch (e: Exception) {
-            throw Exception("Error fetching image: ${e.message}", e)
+            throw Exception("Error fetching characters: ${e.message}", e)
         }
     }
 
