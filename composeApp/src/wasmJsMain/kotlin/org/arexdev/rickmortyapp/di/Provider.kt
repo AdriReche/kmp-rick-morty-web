@@ -6,9 +6,10 @@ import org.arexdev.rickmortyapp.data.remote.ApiServiceKtor
 import org.arexdev.rickmortyapp.domain.GetCharacterImage
 import org.arexdev.rickmortyapp.domain.GetRandomCharacter
 import org.arexdev.rickmortyapp.domain.Repository
+import org.arexdev.rickmortyapp.domain.model.CharacterModel
+import org.arexdev.rickmortyapp.ui.details.CharacterDetailViewModel
 import org.arexdev.rickmortyapp.ui.home.tabs.characters.CharactersViewModel
 import org.arexdev.rickmortyapp.ui.home.tabs.episodes.EpisodesViewModel
-
 
 object Provider {
     val apiService = ApiServiceKtor()
@@ -18,4 +19,8 @@ object Provider {
     val getCharacterImage = GetCharacterImage(repository)
     val episodesViewModel: EpisodesViewModel by lazy { EpisodesViewModel(repository) }
     val charactersViewModel: CharactersViewModel by lazy { CharactersViewModel(getRandomCharacter, repository) }
+
+    fun provideCharacterDetailViewModel(character: CharacterModel): CharacterDetailViewModel {
+        return CharacterDetailViewModel(character, repository)
+    }
 }
