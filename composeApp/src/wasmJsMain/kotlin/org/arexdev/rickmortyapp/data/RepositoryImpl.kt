@@ -33,4 +33,17 @@ class RepositoryImpl(private val apiService: ApiServiceKtor, private val localSt
     override suspend fun getAllEpisodes(page: Int): List<EpisodeModel> =
         apiService.getAllEpisodes(page).results.map { it.toDomainModel() }
 
+    override suspend fun getEpisodesForCharacter(episodes: List<String>): List<EpisodeModel> {
+        if (episodes.isEmpty()) return emptyList()
+
+        return if (episodes.size > 1) {
+            apiService.getEpisodes(episodes.joinToString(",")).map { episodeResponse ->
+                episodeResponse.toDomainModel()
+            }
+        } else {
+            listOf(apiService.getSingleEpisode(episodes.first()).toDomainModel())
+        }
+
+    }
+
 }

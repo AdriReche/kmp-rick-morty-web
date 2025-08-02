@@ -6,12 +6,15 @@ import io.ktor.client.request.*
 import kotlinx.serialization.json.Json
 import org.arexdev.rickmortyapp.data.remote.response.CharacterResponse
 import org.arexdev.rickmortyapp.data.remote.response.CharactersWrapperResponse
+import org.arexdev.rickmortyapp.data.remote.response.EpisodeResponse
 import org.arexdev.rickmortyapp.data.remote.response.EpisodesWrapperResponse
 
 class ApiServiceKtor() {
 
     companion object {
         private const val BASE_URL = "https://rickandmortyapi.com/api/"
+
+        private const val EPISODES_URL = "$BASE_URL/episode/"
     }
 
     private val json = Json { ignoreUnknownKeys = true }
@@ -51,12 +54,22 @@ class ApiServiceKtor() {
 
     suspend fun getAllEpisodes(page: Int): EpisodesWrapperResponse {
         try {
-            val response: String = client.get(BASE_URL + "episode/") {
+            val response: String = client.get(EPISODES_URL) {
                 parameter("page", page)
             }.body()
             return json.decodeFromString(EpisodesWrapperResponse.serializer(), response)
         } catch (e: Exception) {
             throw Exception("Error fetching episodes: ${e.message}", e)
         }
+    }
+
+    suspend fun getEpisodes(episodes: String): List<EpisodeResponse> {
+        val response: String = client.get(EPISODES_URL + episodes).body()
+        return json.decodeFromString(response)
+    }
+
+    suspend fun getSingleEpisode(episodeId: String): EpisodeResponse {
+        val response: String = client.get(EPISODES_URL + episodeId).body()
+        return json.decodeFromString(response)
     }
 }

@@ -17,12 +17,12 @@ import org.arexdev.rickmortyapp.ui.core.navigation.bottomnavigation.BottomBarIte
 import org.arexdev.rickmortyapp.ui.core.navigation.bottomnavigation.NavigationBottomWrapper
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(mainNavController: NavHostController) {
     val items = listOf(BottomBarItem.Episodes(), BottomBarItem.Characters())
-    val navController = rememberNavController()
-    Scaffold(bottomBar = { BottomNavigationBar(items, navController) }) { padding ->
+    val bottomBarNavController = rememberNavController()
+    Scaffold(bottomBar = { BottomNavigationBar(items, bottomBarNavController) }) { padding ->
         Box(modifier = Modifier.padding(padding)) {
-            NavigationBottomWrapper(navController)
+            NavigationBottomWrapper(bottomBarNavController, mainNavController)
         }
     }
 }

@@ -11,4 +11,5 @@ interface Repository {
     suspend fun saveCharacterDB(selectedDay: String, character: CharacterModel)
     suspend fun getCharacterDB(selectedDay: String): CharacterModel?
     suspend fun getAllEpisodes(page: Int): List<EpisodeModel>
+    suspend fun getEpisodesForCharacter(episodes: List<String>): List<EpisodeModel>
 }

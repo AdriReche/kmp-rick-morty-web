@@ -43,7 +43,7 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 @Preview
-fun CharactersScreen() {
+fun CharactersScreen(navigateToDetail: (CharacterModel) -> Unit) {
     val charactersViewModel = remember { Provider.charactersViewModel }
     val state by charactersViewModel.state.collectAsState()
 
@@ -58,7 +58,7 @@ fun CharactersScreen() {
             CharacterOfTheDay(state.characterOfTheDay)
         }
         Spacer(modifier = Modifier.height(24.dp))
-        CharactersScreenPag(charactersViewModel)
+        CharactersScreenPag(charactersViewModel, navigateToDetail)
     }
 }
 
@@ -112,7 +112,7 @@ fun CharacterOfTheDay(characterModel: CharacterModel? = null) {
 }
 
 @Composable
-fun CharactersScreenPag(viewModel: CharactersViewModel) {
+fun CharactersScreenPag(viewModel: CharactersViewModel, navigateToDetail: (CharacterModel) -> Unit) {
     val state by viewModel.state.collectAsState()
 
     Box {
@@ -127,7 +127,9 @@ fun CharactersScreenPag(viewModel: CharactersViewModel) {
                 if (index >= state.characters.items.size - 5 && !state.characters.loading && !state.characters.endReached) {
                     viewModel.loadPaginationNext()
                 }
-                CharacterItemList(state.characters.items[index])
+                CharacterItemList(state.characters.items[index]) { character ->
+                    navigateToDetail(character)
+                }
             }
 
             item(span = { GridItemSpan(5) }) {
@@ -145,14 +147,14 @@ fun CharactersScreenPag(viewModel: CharactersViewModel) {
 }
 
 @Composable
-fun CharacterItemList(characterModel: CharacterModel) {
+fun CharacterItemList(characterModel: CharacterModel, onItemSelected: (CharacterModel) -> Unit) {
     Box(
         modifier = Modifier
             .size(200.dp)
             .clip(RoundedCornerShape(24))
             .border(2.dp, Color.Green, shape = RoundedCornerShape(0, 24, 0, 24)).fillMaxSize()
             .clickable {
-                // Handle click event
+                onItemSelected(characterModel)
             },
         contentAlignment = Alignment.BottomCenter
     ) {
