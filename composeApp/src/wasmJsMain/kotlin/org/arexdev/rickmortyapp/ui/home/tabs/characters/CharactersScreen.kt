@@ -31,12 +31,16 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import org.arexdev.rickmortyapp.di.Provider
 import org.arexdev.rickmortyapp.domain.model.CharacterModel
+import org.arexdev.rickmortyapp.ui.core.BackgroundPrimaryColor
+import org.arexdev.rickmortyapp.ui.core.DefaultTextColor
+import org.arexdev.rickmortyapp.ui.core.Green
 import org.arexdev.rickmortyapp.ui.core.component.WebAsyncImage
 import org.arexdev.rickmortyapp.ui.core.ex.vertical
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -48,13 +52,13 @@ fun CharactersScreen(navigateToDetail: (CharacterModel) -> Unit) {
     val state by charactersViewModel.state.collectAsState()
 
     Column(
-        Modifier.fillMaxSize(),
+        modifier = Modifier.fillMaxSize().background(BackgroundPrimaryColor),
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     )
     {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Text("Characters", fontSize = 24.sp, color = Color.Black)
+            Text("Characters", fontSize = 24.sp, color = DefaultTextColor, fontWeight = FontWeight.SemiBold)
             CharacterOfTheDay(state.characterOfTheDay)
         }
         Spacer(modifier = Modifier.height(24.dp))
@@ -71,7 +75,7 @@ fun CharacterOfTheDay(characterModel: CharacterModel? = null) {
     ) {
         if (characterModel == null) {
             Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
-                CircularProgressIndicator(color = Color.Green)
+                CircularProgressIndicator(color = Green)
             }
         } else {
             Box(contentAlignment = Alignment.Center) {
@@ -152,7 +156,7 @@ fun CharacterItemList(characterModel: CharacterModel, onItemSelected: (Character
         modifier = Modifier
             .size(200.dp)
             .clip(RoundedCornerShape(24))
-            .border(2.dp, Color.Green, shape = RoundedCornerShape(0, 24, 0, 24)).fillMaxSize()
+            .border(2.dp, Green, shape = RoundedCornerShape(0, 24, 0, 24)).fillMaxSize()
             .clickable {
                 onItemSelected(characterModel)
             },
